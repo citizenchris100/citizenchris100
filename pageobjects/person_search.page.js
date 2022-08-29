@@ -9,6 +9,11 @@ class Person_searchPage extends Page {
     return $('//descendant::h4[@class="patient-name"][' + index + "]");
   }
 
+  async personPresantInList(name) {
+      let elm = $('//h4[@class="patient-name"][contains(text(),"'+name+'")]')
+      await elm.waitForDisplayed({timeout: 10000});
+  }
+
   async getPersonName(index) {
       let elm = this.personInList(index);
       await elm.waitForDisplayed({timeout: 10000});

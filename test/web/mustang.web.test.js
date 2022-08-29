@@ -13,6 +13,9 @@ describe("Mustang Web Tests", () => {
 
     it("can click person search icon", async () => {
         await MainPage.clickPersonSearch();
-        await PerssonSearchPage.onPersonSearchPage()
+        await PerssonSearchPage.onPersonSearchPage();
+        let name = await PerssonSearchPage.getPersonName(1);
+        await PerssonSearchPage.searchForPerson(name);
+        await PerssonSearchPage.personPresantInList(name);
     });
 });

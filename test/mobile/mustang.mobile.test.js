@@ -18,5 +18,6 @@ describe("Mustang POC", () => {
         await PerssonSearchPage.onPersonSearchPage();
         let name = await PerssonSearchPage.getPersonName(1);
         await PerssonSearchPage.searchForPerson(name);
+        await PerssonSearchPage.personPresantInList(name);
     });
 });
