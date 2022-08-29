@@ -16,6 +16,7 @@ describe("Mustang POC", () => {
     it("can click person search icon", async () => {
         await MainPage.clickPersonSearch();
         await PerssonSearchPage.onPersonSearchPage();
-        await PerssonSearchPage.getPersonName(1)
+        let name = await PerssonSearchPage.getPersonName(1);
+        await PerssonSearchPage.searchForPerson(name);
     });
 });

@@ -13,7 +13,13 @@ class Person_searchPage extends Page {
       let elm = this.personInList(index);
       await elm.waitForDisplayed({timeout: 10000});
       let txt = (await elm.getText()).split(' ');
-      return txt[0] + " " + txt[1];
+      let name = txt[0] + " " + txt[1];
+      return name.toString();
+  }
+
+  async searchForPerson(person) {
+      await this.searchField.click();
+      await this.searchField.setValue(person);
   }
 
   async onPersonSearchPage() {
