@@ -1,4 +1,4 @@
-const MustangPage = require("../pageobjects/mustang.page");
+const MustangPage = require("../../pageobjects/mustang.page");
 
 describe("Mustang POC", () => {
 
