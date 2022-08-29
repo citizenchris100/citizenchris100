@@ -1,4 +1,4 @@
-const MustangPage = require("../../pageobjects/mustang.page");
+const MustangPage = require("../../pageobjects/main.page");
 
 describe("Mustang POC", () => {
 
@@ -8,6 +8,10 @@ describe("Mustang POC", () => {
     });
 
     it("can click calendar icon", async () => {
-        await MustangPage.clickCalendar(true);
+        await MustangPage.clickCalendar();
+    });
+
+    it("can click person search icon", async () => {
+        await MustangPage.clickPersonSearch();
     });
 });
