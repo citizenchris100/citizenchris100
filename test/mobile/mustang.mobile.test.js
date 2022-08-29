@@ -1,4 +1,6 @@
 const MustangPage = require("../../pageobjects/main.page");
+const MainPage = require("../../pageobjects/main.page");
+const PerssonSearchPage = require("../../pageobjects/person_search.page");
 
 describe("Mustang POC", () => {
 
@@ -12,6 +14,7 @@ describe("Mustang POC", () => {
     });
 
     it("can click person search icon", async () => {
-        await MustangPage.clickPersonSearch();
+        await MainPage.clickPersonSearch();
+        await PerssonSearchPage.onPersonSearchPage()
     });
 });
