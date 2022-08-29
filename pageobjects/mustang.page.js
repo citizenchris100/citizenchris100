@@ -7,13 +7,6 @@ class MustangPage extends Page {
     }
 
     async clickCalendar(mobile) {
-        if (mobile) {
-            let contexts = await driver.getContexts();
-            await driver.switchContext(contexts[1]);
-        } else {
-
-        }
-
         await this.calendar.click();
     }
 
