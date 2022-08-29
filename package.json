@@ -4,7 +4,7 @@
   "description": "appium / webdriver io tests of the crm mobile app",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/.bin/wdio wdio.conf.js --port 4723"
+    "test": "./node_modules/.bin/wdio mobile.conf.js --port 4723"
   },
   "repository": {
     "type": "git",
