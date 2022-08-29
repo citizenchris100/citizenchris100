@@ -8,6 +8,9 @@ describe("Mustang POC", () => {
 
     it("can click calendar icon", async () => {
         await MustangPage.clickCalendar(true);
+    });
 
+    it("can click person search icon", async () => {
+        await MustangPage.clickPersonSearch();
     });
 });
