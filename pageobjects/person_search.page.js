@@ -12,7 +12,8 @@ class Person_searchPage extends Page {
   async getPersonName(index) {
       let elm = this.personInList(index);
       await elm.waitForDisplayed({timeout: 10000});
-      let txt = await elm.getText();
+      let txt = (await elm.getText()).split(' ');
+      return txt[0] + " " + txt[1];
   }
 
   async onPersonSearchPage() {
