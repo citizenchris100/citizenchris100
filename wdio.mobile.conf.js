@@ -20,19 +20,19 @@ exports.config = {
   // ==================
   // Specify Test Files
   // ==================
-  // Define which test specs should run. The pattern is relative to the directory
+  // Define which test mobile should run. The pattern is relative to the directory
   // from which `wdio` was called.
   //
-  // The specs are defined as an array of spec files (optionally using wildcards
+  // The mobile are defined as an array of spec files (optionally using wildcards
   // that will be expanded). The test for each spec file will be run in a separate
   // worker process. In order to have a group of spec files run in the same worker
-  // process simply enclose them in an array within the specs array.
+  // process simply enclose them in an array within the mobile array.
   //
   // If you are calling `wdio` from an NPM script (see https://docs.npmjs.com/cli/run-script),
   // then the current working directory is where your `package.json` resides, so `wdio`
   // will be called from there.
   //
-  specs: ["./test/specs/**/*.js"],
+  specs: ["./test/mobile/**/*.js"],
   // Patterns to exclude.
   exclude: [
     // 'path/to/excluded/files'
@@ -44,7 +44,7 @@ exports.config = {
   // Define your capabilities here. WebdriverIO can run multiple capabilities at the same
   // time. Depending on the number of capabilities, WebdriverIO launches several test
   // sessions. Within your capabilities you can overwrite the spec and exclude options in
-  // order to group specific specs to a specific capability.
+  // order to group specific mobile to a specific capability.
   //
   // First, you can define how many instances should be started at the same time. Let's
   // say you have 3 different capabilities (Chrome, Firefox, and Safari) and you have
@@ -128,7 +128,7 @@ exports.config = {
   // commands. Instead, they hook themselves up into the test process.
   services: ["chromedriver"],
 
-  // Framework you want to run your specs with.
+  // Framework you want to run your mobile with.
   // The following are supported: Mocha, Jasmine, and Cucumber
   // see also: https://webdriver.io/docs/frameworks
   //
@@ -184,11 +184,11 @@ exports.config = {
    * for that worker as well as modify runtime environments in an async fashion.
    * @param  {String} cid      capability id (e.g 0-0)
    * @param  {[type]} caps     object containing capabilities for session that will be spawn in the worker
-   * @param  {[type]} specs    specs to be run in the worker process
+   * @param  {[type]} mobile    mobile to be run in the worker process
    * @param  {[type]} args     object that will be merged with the main configuration once worker is initialised
    * @param  {[type]} execArgv list of string arguments passed to the worker process
    */
-  // onWorkerStart: function (cid, caps, specs, args, execArgv) {
+  // onWorkerStart: function (cid, caps, mobile, args, execArgv) {
   // },
   /**
    * Gets executed just before initialising the webdriver session and test framework. It allows you
@@ -197,7 +197,7 @@ exports.config = {
    * @param {Array.<Object>} capabilities list of capabilities details
    * @param {Array.<String>} specs List of spec file paths that are to be run
    */
-  // beforeSession: function (config, capabilities, specs) {
+  // beforeSession: function (config, capabilities, mobile) {
   // },
   /**
    * Gets executed before test execution begins. At this point you can access to all global
@@ -206,7 +206,7 @@ exports.config = {
    * @param {Array.<String>} specs        List of spec file paths that are to be run
    * @param {Object}         browser      instance of created browser/device session
    */
-  // before: function (capabilities, specs) {
+  // before: function (capabilities, mobile) {
   // },
   /**
    * Runs before a WebdriverIO command gets executed.
@@ -266,7 +266,7 @@ exports.config = {
    * @param {Array.<Object>} capabilities list of capabilities details
    * @param {Array.<String>} specs List of spec file paths that ran
    */
-  // after: function (result, capabilities, specs) {
+  // after: function (result, capabilities, mobile) {
   // },
   /**
    * Gets executed right after terminating the webdriver session.
@@ -274,7 +274,7 @@ exports.config = {
    * @param {Array.<Object>} capabilities list of capabilities details
    * @param {Array.<String>} specs List of spec file paths that ran
    */
-  // afterSession: function (config, capabilities, specs) {
+  // afterSession: function (config, capabilities, mobile) {
   // },
   /**
    * Gets executed after all workers got shut down and the process is about to exit. An error
