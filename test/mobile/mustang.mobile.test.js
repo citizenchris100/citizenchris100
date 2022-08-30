@@ -2,7 +2,7 @@ const MustangPage = require("../../pageobjects/main.page");
 const MainPage = require("../../pageobjects/main.page");
 const PerssonSearchPage = require("../../pageobjects/person_search.page");
 
-describe("Mustang POC", () => {
+describe("Mustang Mobile Tests", () => {
 
     beforeAll(async function () {
         let contexts = await driver.getContexts();
