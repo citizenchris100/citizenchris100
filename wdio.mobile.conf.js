@@ -66,7 +66,7 @@ exports.config = {
       "automationName": "UiAutomator2",
       "platformVersion": "11.0",
       "udid": "emulator-5554",
-      "app": "C:\\Users\\cmanning\\OneDrive - Homecare Homebase, LLC\\Documents\\mustang apks\\app-webviewandaria-debug005.apk",
+      "app": "C:\\Users\\cmanning\\OneDrive - Homecare Homebase, LLC\\Documents\\mustang apks\\app-demobuild-debug006.apk",
       "autoGrantPermissions": true,
       "autoAcceptAlerts": true,
       "autoDismissAlerts": true,
