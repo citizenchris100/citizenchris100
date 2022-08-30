@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 exports.config = {
   port: 4723, // default appium port
   runner: "local",
@@ -66,7 +68,7 @@ exports.config = {
       "automationName": "UiAutomator2",
       "platformVersion": "11.0",
       "udid": "emulator-5554",
-      "app": "C:\\Users\\cmanning\\OneDrive - Homecare Homebase, LLC\\Documents\\mustang apks\\app-demobuild-debug006.apk",
+      "app": process.env.APP.toString(),
       "autoGrantPermissions": true,
       "autoAcceptAlerts": true,
       "autoDismissAlerts": true,
