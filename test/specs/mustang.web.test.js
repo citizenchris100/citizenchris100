@@ -1,11 +1,16 @@
 const MainPage = require("../../pageobjects/main.page");
 const PerssonSearchPage = require("../../pageobjects/person_search.page");
+require("dotenv").config();
 
 describe("Mustang Web Tests", () => {
 
     beforeAll(async function () {
-        if(process.env.PLATFORM.toString() === "web") {
+        let platform = process.env.PLATFORM.toString()
+        if( platform === "web") {
             browser.url('/');
+        } else {
+            let contexts = await driver.getContexts();
+            await driver.switchContext(contexts[1]);
         }
     });
 
