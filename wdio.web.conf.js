@@ -24,7 +24,7 @@ exports.config = {
   // then the current working directory is where your `package.json` resides, so `wdio`
   // will be called from there.
   //
-  specs: ["./test/web/**/*.js"],
+  specs: ["./test/specs/**/*.js"],
   // Patterns to exclude.
   exclude: [
     // 'path/to/excluded/files'
@@ -54,7 +54,6 @@ exports.config = {
   capabilities: [
     {
       browserName: 'chrome',
-
     },
   ],
   //
