@@ -4,9 +4,7 @@ const PerssonSearchPage = require("../../pageobjects/person_search.page");
 describe("Mustang Web Tests", () => {
 
     beforeAll(async function () {
-        if(process.env.PLATFORM.toString() === "web") {
-            browser.url('/');
-        }
+        browser.url('/');
     });
 
     it("can search for a person", async () => {
