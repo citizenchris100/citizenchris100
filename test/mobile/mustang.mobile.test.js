@@ -9,11 +9,7 @@ describe("Mustang Mobile Tests", () => {
         await driver.switchContext(contexts[1]);
     });
 
-    it("can click calendar icon", async () => {
-        await MustangPage.clickCalendar();
-    });
-
-    it("can click person search icon", async () => {
+    it("can search for a person", async () => {
         await MainPage.clickPersonSearch();
         await PerssonSearchPage.onPersonSearchPage();
         let name = await PerssonSearchPage.getPersonName(1);
