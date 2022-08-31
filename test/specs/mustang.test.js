@@ -1,11 +1,13 @@
-const MainPage = require("../../pageobjects/main.page");
-const PerssonSearchPage = require("../../pageobjects/person_search.page");
+const SideNav = require("../../pageobjects/side.nav");
+const PersonSearchModal = require("../../pageobjects/person.search.modal");
 require("dotenv").config();
+let platform;
+let name1;
 
 describe("Mustang Web Tests", () => {
 
     beforeAll(async function () {
-        let platform = process.env.PLATFORM.toString()
+        platform = process.env.PLATFORM.toString()
         if( platform === "web") {
             browser.url('/');
         } else {
@@ -14,11 +16,25 @@ describe("Mustang Web Tests", () => {
         }
     });
 
+
     it("can search for a person", async () => {
-        await MainPage.clickPersonSearch();
-        await PerssonSearchPage.onPersonSearchPage();
-        let name = await PerssonSearchPage.getPersonName(1);
-        await PerssonSearchPage.searchForPerson(name);
-        await PerssonSearchPage.personPresantInList(name);
+        await SideNav.clickPersonSearch();
+        await PersonSearchModal.personSearchModalOpen();
+        name1 = await PersonSearchModal.getPersonName(1);
+        await PersonSearchModal.searchForPerson(name1);
+        await PersonSearchModal.personPresantInList(name1);
+        await SideNav.clickPersonSearch();
     });
+
+
+    it("can open patient record from search results", async () => {
+        await SideNav.clickPersonSearch();
+        await PersonSearchModal.personSearchModalOpen();
+        name1 = await PersonSearchModal.getPersonName(1);
+        await PersonSearchModal.searchForPerson(name1);
+        await PersonSearchModal.personPresantInList(name1);
+        await PersonSearchModal.selectPersonInListByName(name1);
+        await PersonSearchModal.personSearchModalClosed();
+    });
+
 });

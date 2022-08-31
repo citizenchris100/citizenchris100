@@ -1,12 +1,16 @@
 const Page = require("./page");
 
-class Person_searchPage extends Page {
+class PersonSearchModal extends Page {
   get searchField() {
     return $('//input[@class="k-input-inner"]');
   }
 
-  async onPersonSearchPage() {
-    await this.searchField.waitForDisplayed({ timeout: 10000 });
+  async personSearchModalOpen() {
+    await this.searchField.waitForDisplayed({ timeout: 15000 });
+  }
+
+  async personSearchModalClosed() {
+    await this.searchField.waitForDisplayed({reverse: true, timeout: 5000});
   }
 
   personInList(index) {
@@ -37,7 +41,8 @@ class Person_searchPage extends Page {
 
   async selectPersonInListByName(name) {
     await this.personInListByName(name).click();
+    await this.searchField.wa
   }
 }
 
-module.exports = new Person_searchPage();
+module.exports = new PersonSearchModal();
