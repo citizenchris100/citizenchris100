@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 exports.config = {
   port: 4723, // default appium port
   runner: "local",
@@ -32,7 +34,7 @@ exports.config = {
   // then the current working directory is where your `package.json` resides, so `wdio`
   // will be called from there.
   //
-  specs: ["./test/mobile/**/*.js"],
+  specs: ["./test/specs/**/*.js"],
   // Patterns to exclude.
   exclude: [
     // 'path/to/excluded/files'
@@ -66,7 +68,7 @@ exports.config = {
       "automationName": "UiAutomator2",
       "platformVersion": "11.0",
       "udid": "emulator-5554",
-      "app": "C:\\Users\\cmanning\\OneDrive - Homecare Homebase, LLC\\Documents\\mustang apks\\app-webviewandaria-debug005.apk",
+      "app": process.env.APP.toString(),
       "autoGrantPermissions": true,
       "autoAcceptAlerts": true,
       "autoDismissAlerts": true,
