@@ -16,7 +16,27 @@ describe("Person Search Modal", () => {
         }
     });
 
-    it("displays person that was searched for", async () => {
+    it("displays person that was searched for with only first name", async () => {
+        await SideNav.clickPersonSearch();
+        await PersonSearchModal.personSearchModalOpen();
+        name1 = await PersonSearchModal.getPersonName(1);
+        let firstName = name1.split(' ')[0]
+        await PersonSearchModal.searchForPerson(firstName);
+        await PersonSearchModal.personPresantInList(name1);
+        await SideNav.clickPersonSearch();
+    });
+
+    it("displays person that was searched for with only last name", async () => {
+        await SideNav.clickPersonSearch();
+        await PersonSearchModal.personSearchModalOpen();
+        name1 = await PersonSearchModal.getPersonName(1);
+        let lastName = name1.split(' ')[1]
+        await PersonSearchModal.searchForPerson(lastName);
+        await PersonSearchModal.personPresantInList(name1);
+        await SideNav.clickPersonSearch();
+    });
+
+    it("displays person that was searched for with first & last name", async () => {
         await SideNav.clickPersonSearch();
         await PersonSearchModal.personSearchModalOpen();
         name1 = await PersonSearchModal.getPersonName(1);
