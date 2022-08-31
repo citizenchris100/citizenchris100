@@ -4,7 +4,7 @@ require("dotenv").config();
 let platform;
 let name1;
 
-describe("Mustang Web Tests", () => {
+describe("Person Search Modal", () => {
 
     beforeAll(async function () {
         platform = process.env.PLATFORM.toString()
@@ -16,8 +16,7 @@ describe("Mustang Web Tests", () => {
         }
     });
 
-
-    it("can search for a person", async () => {
+    it("displays person that was searched for", async () => {
         await SideNav.clickPersonSearch();
         await PersonSearchModal.personSearchModalOpen();
         name1 = await PersonSearchModal.getPersonName(1);
@@ -26,8 +25,15 @@ describe("Mustang Web Tests", () => {
         await SideNav.clickPersonSearch();
     });
 
+    it("displays no patients when none are found", async () => {
+        await SideNav.clickPersonSearch();
+        await PersonSearchModal.personSearchModalOpen();
+        await PersonSearchModal.searchForPerson("foo bar");
+        await PersonSearchModal.noPatientFoundDisplayed();
+        await SideNav.clickPersonSearch();
+    });
 
-    it("can open patient record from search results", async () => {
+    it("closes once a person is clicked", async () => {
         await SideNav.clickPersonSearch();
         await PersonSearchModal.personSearchModalOpen();
         name1 = await PersonSearchModal.getPersonName(1);
