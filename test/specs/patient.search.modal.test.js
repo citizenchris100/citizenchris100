@@ -1,5 +1,5 @@
 const SideNav = require("../../pageobjects/side.nav");
-const PersonSearchModal = require("../../pageobjects/person.search.modal");
+const PersonSearchModal = require("../../pageobjects/patient.search.modal");
 require("dotenv").config();
 let platform;
 let name1;
@@ -19,11 +19,9 @@ describe("Person Search Modal", () => {
     it("opens", async () => {
         await SideNav.clickPersonSearch();
         await PersonSearchModal.personSearchModalOpen();
-        await SideNav.clickPersonSearch();
     });
 
     it("closes upon re selecting the person search nav icon", async () => {
-        await SideNav.clickPersonSearch();
         await PersonSearchModal.personSearchModalOpen();
         await SideNav.clickPersonSearch();
         await PersonSearchModal.personSearchModalClosed();

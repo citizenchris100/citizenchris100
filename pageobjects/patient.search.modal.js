@@ -1,6 +1,6 @@
 const Page = require("./page");
 
-class PersonSearchModal extends Page {
+class PatientSearchModal extends Page {
 
   get searchField() {
     return $('//input[@class="k-input-inner"]');
@@ -54,4 +54,4 @@ class PersonSearchModal extends Page {
   }
 }
 
-module.exports = new PersonSearchModal();
+module.exports = new PatientSearchModal();
