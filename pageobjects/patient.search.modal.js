@@ -50,7 +50,6 @@ class PatientSearchModal extends Page {
 
   async selectPersonInListByName(name) {
     await this.personInListByName(name).click();
-    await this.searchField.wa
   }
 }
 
