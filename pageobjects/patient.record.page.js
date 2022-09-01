@@ -6,6 +6,18 @@ class PatientRecordPage extends Page {
         return this.tab("Health Record")
     }
 
+    visitHistoryTab() {
+        return this.tab("Visit History")
+    }
+
+    calendarTab() {
+        return this.tab("Calendar")
+    }
+
+    documentTab() {
+        return this.tab("Documents")
+    }
+
     onPatientRecordPage() {
         this.healthRecordTab().waitForDisplayed({timeout: 5000})
     }

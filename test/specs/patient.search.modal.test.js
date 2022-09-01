@@ -5,7 +5,7 @@ require("dotenv").config();
 let platform;
 let name1;
 
-describe("Person Search Modal", () => {
+describe("Patient Search Modal", () => {
 
     beforeAll(async function () {
         platform = process.env.PLATFORM.toString()
