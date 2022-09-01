@@ -1,8 +1,13 @@
 const Page = require("./page");
 
-class PersonSearchModal extends Page {
+class PatientSearchModal extends Page {
+
   get searchField() {
     return $('//input[@class="k-input-inner"]');
+  }
+
+  get noPatientFound() {
+    return $('//div[@class="hchb-list-view-no-results"][text()="No Patients."]')
   }
 
   async personSearchModalOpen() {
@@ -11,6 +16,10 @@ class PersonSearchModal extends Page {
 
   async personSearchModalClosed() {
     await this.searchField.waitForDisplayed({reverse: true, timeout: 5000});
+  }
+
+  async noPatientFoundDisplayed() {
+    await this.noPatientFound.waitForDisplayed({timeout: 5000})
   }
 
   personInList(index) {
@@ -45,4 +54,4 @@ class PersonSearchModal extends Page {
   }
 }
 
-module.exports = new PersonSearchModal();
+module.exports = new PatientSearchModal();
