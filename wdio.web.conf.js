@@ -45,7 +45,7 @@ exports.config = {
   // and 30 processes will get spawned. The property handles how many capabilities
   // from the same test should run tests.
   //
-  // maxInstances: 10,
+  maxInstances: 10,
   //
   // If you have trouble getting all important capabilities together, check out the
   // Sauce Labs platform configurator - a great tool to configure your capabilities:
@@ -54,6 +54,11 @@ exports.config = {
   capabilities: [
     {
       browserName: 'chrome',
+      'goog:chromeOptions': {
+        // to run chrome headless the following flags are required
+        // (see https://developers.google.com/web/updates/2017/04/headless-chrome)
+         args: ['--headless', '--disable-gpu'],
+      }
     },
   ],
   //
