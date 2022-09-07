@@ -22,6 +22,18 @@ class PatientRecordPage extends Page {
         this.healthRecordTab().waitForDisplayed({timeout: 5000})
     }
 
+    async selectHealthRecord() {
+        await this.healthRecordTab().click();
+    }
+
+    async selectVisitHistoryTab() {
+        await this.visitHistoryTab().click();
+    }
+
+   async visitHistoryTabSelected() {
+        await $('//*[text()="Visit History Empty Area"]').waitForDisplayed({timeout: 5000});
+    }
+
 }
 
 module.exports = new PatientRecordPage();

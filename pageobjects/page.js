@@ -5,7 +5,7 @@ module.exports = class Page {
   }
 
   tab(name) {
-       return $('//li[@role="tab"][//span[text()="'+name+'"]]');
+       return $('//span[text()="'+name+'"]');
   }
 
 };
