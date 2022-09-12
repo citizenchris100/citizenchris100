@@ -16,11 +16,10 @@ Options are _web_ or _mobile_
 launch the _appium_ server against port _4723_
 
 ### running tests
-you can run the tests against the platform of your choice by entering either
+you can run the tests using the wdio comman
+ex: ```npx wdio wdio.mobile.conf.js```
 
-```npm run mobile_test``` to test against a mobile device
+the above command calls the mobile.conf file which will run the tests against the mobile device designated
 
-or
-
-```npm run web_test``` to test against chrome
+in the desired capabilities. 
 
