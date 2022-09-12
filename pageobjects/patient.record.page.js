@@ -30,8 +30,16 @@ class PatientRecordPage extends Page {
         await this.visitHistoryTab().click();
     }
 
-   async visitHistoryTabSelected() {
-        await $('//*[text()="Visit History Empty Area"]').waitForDisplayed({timeout: 5000});
+    async selectCalendarTab() {
+        await this.calendarTab().click();
+    }
+
+    async selectDocumentsTab() {
+        await this.documentTab().click();
+    }
+
+   async visitHistoryTabSelected(tab) {
+        await $('//*[contains(text(),"'+tab+' Empty Area")]').waitForDisplayed({timeout: 5000});
     }
 
 }

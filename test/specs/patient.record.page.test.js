@@ -17,7 +17,6 @@ describe("Patient Record Page", () => {
         }
     });
 
-    /**
     it("opens the patient record once a patient is selected", async () => {
         await SideNav.clickPersonSearch();
         await PatientSearchModal.personSearchModalOpen();
@@ -28,9 +27,8 @@ describe("Patient Record Page", () => {
         await PatientSearchModal.personSearchModalClosed();
         await PatientRecordPage.onPatientRecordPage();
     });
-     */
 
-    it("displays health record tab", async () => {
+    it("displays visit history tab", async () => {
         await SideNav.clickPersonSearch();
         await PatientSearchModal.personSearchModalOpen();
         name1 = await PatientSearchModal.getPersonName(1);
@@ -40,7 +38,33 @@ describe("Patient Record Page", () => {
         await PatientSearchModal.personSearchModalClosed();
         await PatientRecordPage.onPatientRecordPage();
         await PatientRecordPage.selectVisitHistoryTab();
-        await PatientRecordPage.visitHistoryTabSelected();
+        await PatientRecordPage.visitHistoryTabSelected("Visit History");
+    });
+
+    it("displays calendar tab", async () => {
+        await SideNav.clickPersonSearch();
+        await PatientSearchModal.personSearchModalOpen();
+        name1 = await PatientSearchModal.getPersonName(1);
+        await PatientSearchModal.searchForPerson(name1);
+        await PatientSearchModal.personPresantInList(name1);
+        await PatientSearchModal.selectPersonInListByName(name1);
+        await PatientSearchModal.personSearchModalClosed();
+        await PatientRecordPage.onPatientRecordPage();
+        await PatientRecordPage.selectCalendarTab();
+        await PatientRecordPage.visitHistoryTabSelected("Calendar");
+    });
+
+    it("displays documents tab", async () => {
+        await SideNav.clickPersonSearch();
+        await PatientSearchModal.personSearchModalOpen();
+        name1 = await PatientSearchModal.getPersonName(1);
+        await PatientSearchModal.searchForPerson(name1);
+        await PatientSearchModal.personPresantInList(name1);
+        await PatientSearchModal.selectPersonInListByName(name1);
+        await PatientSearchModal.personSearchModalClosed();
+        await PatientRecordPage.onPatientRecordPage();
+        await PatientRecordPage.selectDocumentsTab();
+        await PatientRecordPage.visitHistoryTabSelected("Documents");
     });
 
 });
