@@ -11,6 +11,14 @@ class CalendarPage extends Page {
         await this.calendarRoot.waitForDisplayed({timeout: 15000})
     }
 
+    calendarDay(day) {
+        return $('//descendant::td[contains(@class,"day")]['+day+']');
+    }
+
+    async selectDay(day) {
+        await this.calendarDay(day).click();
+    }
+
 
 }
 

@@ -20,5 +20,13 @@ describe( 'Calendar', () => {
     it('opens', async () => {
         await SideNav.clickCalendar();
         await CalendarPage.onCalendarPage();
-    })
+    });
+
+    it('can select day', async () => {
+        await SideNav.clickCalendar();
+        await CalendarPage.onCalendarPage();
+        await CalendarPage.selectDay("3");
+    });
+
+
 })
