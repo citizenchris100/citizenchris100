@@ -64,10 +64,10 @@ exports.config = {
   capabilities: [
     {
       "platformName": "Android",
-      "deviceName": "Pixel XL API Sv2",
+      "deviceName": process.env.DEVICE_NAME.toString(),
       "automationName": "UiAutomator2",
-      "platformVersion": "11.0",
-      "udid": "emulator-5554",
+      "platformVersion": process.env.VERSION.toString(),
+      "udid": process.env.DEVICE_UUID.toString(),
       "app": process.env.APP.toString(),
       "autoGrantPermissions": true,
       "autoAcceptAlerts": true,
@@ -77,9 +77,11 @@ exports.config = {
       "appPackage": "com.hchb.poc.mustang",
       "skipDeviceInitialization": false,
       "skipUnlock": true,
-      "noReset": true,
-      "autoLaunch": true
+      "noReset": false,
+      "autoLaunch": true,
+      "locationServicesAuthorized": true
     },
+
   ],
   //
   // ===================
