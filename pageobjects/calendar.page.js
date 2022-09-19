@@ -15,8 +15,18 @@ class CalendarPage extends Page {
         return $('//descendant::td[contains(@class,"day")]['+day+']');
     }
 
+    patientName(index) {
+        return $('//descendant::div[@class="visitCardPatient"]['+index+']')
+    }
+
     async selectDay(day) {
         await this.calendarDay(day).click();
+    }
+
+    async getPersonName(index) {
+        let elm = this.patientName(index);
+        await elm.waitForDisplayed({ timeout: 10000 });
+        return await elm.getText();
     }
 
 
