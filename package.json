@@ -15,6 +15,7 @@
   "license": "ISC",
   "homepage": "https://bitbucket.org/elmstreettechnology/elevate-mobile#readme",
   "devDependencies": {
+    "@wdio/allure-reporter": "^7.24.0",
     "@wdio/appium-service": "^7.8.0",
     "@wdio/cli": "^7.9.0",
     "@wdio/jasmine-framework": "^7.9.0",

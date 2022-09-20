@@ -57,7 +57,7 @@ exports.config = {
       'goog:chromeOptions': {
         // to run chrome headless the following flags are required
         // (see https://developers.google.com/web/updates/2017/04/headless-chrome)
-        // args: ['--headless', '--disable-gpu'],
+        args: ['--headless', '--disable-gpu'],
       }
     },
   ],
@@ -130,7 +130,10 @@ exports.config = {
   // Test reporter for stdout.
   // The only one supported by default is 'dot'
   // see also: https://webdriver.io/docs/dot-reporter
-  reporters: ["spec"],
+  reporters: ["spec",
+    ['allure', {
+      outputDir: 'allure-results',
+    }]],
 
   //
   // Options to be passed to Jasmine.
