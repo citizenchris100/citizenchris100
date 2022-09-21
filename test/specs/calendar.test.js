@@ -2,6 +2,7 @@ const SideNav = require("../../pageobjects/side.nav");
 const CalendarPage = require("../../pageobjects/calendar.page");
 const PatientSearchModal = require("../../pageobjects/patient.search.modal");
 const PatientRecordPage = require("../../pageobjects/patient.record.page");
+const allureReporter = require('@wdio/allure-reporter').default
 require("dotenv").config();
 let platform;
 
@@ -17,12 +18,19 @@ describe( 'Calendar', () => {
         }
     });
 
+    beforeEach(async function () {
+        allureReporter.addFeature('Calendar');
+        allureReporter.addEnvironment('Platform', platform);
+    });
+
     it('opens', async () => {
+        allureReporter.addSeverity('critical');
         await SideNav.clickCalendar();
         await CalendarPage.onCalendarPage();
     });
 
     it('can select day', async () => {
+        allureReporter.addSeverity('normal');
         await SideNav.clickCalendar();
         await CalendarPage.onCalendarPage();
         await CalendarPage.selectDay("3");
