@@ -29,6 +29,10 @@ class CalendarPage extends Page {
         return await elm.getText();
     }
 
+    async getCardInfo(index) {
+        
+    }
+
 
 }
 
