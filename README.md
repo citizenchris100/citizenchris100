@@ -23,3 +23,25 @@ the above command calls the mobile.conf file which will run the tests against th
 
 in the desired capabilities. 
 
+### generating reports
+
+upon running the tests a directory should have been generated at root
+called allure-report.
+
+install allure commandline
+
+```npm install -g allure-commandline```
+
+
+to generate a report run the following command
+```allure generate <\directory where you would like results stored\> --clean```
+
+
+in the following example the results are stored in the project root in a directory called 'allure-results':
+
+```allure generate .\allure-results\ --clean```
+
+to run the allure server and view results 
+
+```allure open ```
+
