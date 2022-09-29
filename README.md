@@ -41,6 +41,10 @@ in the following example the results are stored in the project root in a directo
 
 ```allure generate .\allure-results\ --clean```
 
+please note that the default directory for results is .\allure-results\
+ if another directory is desired it will need to be set within the appropriate wdio conf file
+ under the reports section. 
+
 to run the allure server and view results 
 
 ```allure open ```

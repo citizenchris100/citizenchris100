@@ -25,6 +25,7 @@ describe( 'Calendar', () => {
 
     it('opens', async () => {
         allureReporter.addSeverity('critical');
+        allureReporter.addDescription('ensures that the calendar section loads/opens','text');
         await SideNav.clickCalendar();
         await CalendarPage.onCalendarPage();
     });
