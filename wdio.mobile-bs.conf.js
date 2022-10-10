@@ -8,6 +8,7 @@ exports.config = {
   specs: [["./test/specs/**/*.js"]],
   exclude: [
   ],
+  maxInstances: 10,
   capabilities: [
     {
       "project": "First Webdriverio Android Project",
