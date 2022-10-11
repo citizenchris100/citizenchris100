@@ -22,6 +22,7 @@ describe("Patient Search Modal", () => {
         await PatientSearchModal.personSearchModalOpen();
     });
 
+    /**
     it("closes upon re selecting the person search nav icon", async () => {
         await PatientSearchModal.personSearchModalOpen();
         await SideNav.clickPersonSearch();
@@ -117,6 +118,8 @@ describe("Patient Search Modal", () => {
         await PatientSearchModal.personSearchModalClosed();
         await PatientRecordPage.onPatientRecordPage();
     });
+
+     */
 
 
 });

@@ -73,8 +73,6 @@ exports.config = {
       "autoAcceptAlerts": true,
       "autoDismissAlerts": true,
       "ignoreHiddenApiPolicyError": true,
-      "appActivity": "com.hchb.poc.mustang.MainActivity",
-      "appPackage": "com.hchb.poc.mustang",
       "skipDeviceInitialization": false,
       "skipUnlock": true,
       "noReset": false,
