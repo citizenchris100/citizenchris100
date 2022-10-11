@@ -7,7 +7,7 @@ class SideNav extends Page {
     }
 
     get person_search() {
-        return $('//span[text()="person_search"]');
+        return $('//a[@href="/PatientSearch"]');
     }
 
     async clickCalendar() {
