@@ -43,21 +43,21 @@ describe("Patient Search Modal", () => {
         lastName = name1.split(' ')[1];
         await PatientSearchModal.searchForPerson(firstName);
         await PatientSearchModal.personPresantInList(lastName);
-        await PatientSearchModal.clearSearchField(firstName.length);
     });
 
 
     it("displays person that was searched for with only last name", async () => {
+        await PatientSearchModal.clearSearchField(firstName.length);
         await PatientSearchModal.searchForPerson(lastName);
         await PatientSearchModal.personPresantInList(firstName);
-        await PatientSearchModal.clearSearchField();
+
     });
 
     it("displays person that was searched with partially correct name", async () => {
-        let partialName = name1.split(' ')[0] + " Foo"
+        let partialName = name1.split(' ')[0] + " Foo";
+        await PatientSearchModal.clearSearchField();
         await PatientSearchModal.searchForPerson(partialName);
         await PatientSearchModal.personPresantInList(lastName);
-        await PatientSearchModal.clearSearchField();
     });
 
     it("displays person that was searched for with first & last name", async () => {
@@ -69,14 +69,12 @@ describe("Patient Search Modal", () => {
     it("does not display other patients when search for specific patient", async () => {
         await PatientSearchModal.personNotPresantInList(name2);
         await PatientSearchModal.personNotPresantInList(name3);
-        await PatientSearchModal.clearSearchField();
     });
 
     it("displays no patients when none are found", async () => {
         await PatientSearchModal.clearSearchField();
         await PatientSearchModal.searchForPerson("foo bar");
         await PatientSearchModal.noPatientFoundDisplayed();
-        await PatientSearchModal.clearSearchField();
     });
 
     it("opens the patient record once a patient is selected", async () => {

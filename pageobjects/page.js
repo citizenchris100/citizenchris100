@@ -5,7 +5,7 @@ module.exports = class Page {
   }
 
   tab(name) {
-       return $('//span[text()="'+name+'"]');
+       return $('//div[contains(@class,"mud-tab")][text()="'+name+'"]');
   }
 
 };
