@@ -4,6 +4,10 @@ const PatientRecordPage = require("../../pageobjects/patient.record.page");
 require("dotenv").config();
 let platform;
 let name1;
+let name2;
+let name3;
+let firstName;
+let lastName;
 
 describe("Patient Search Modal", () => {
 
@@ -22,104 +26,65 @@ describe("Patient Search Modal", () => {
         await PatientSearchModal.personSearchModalOpen();
     });
 
-    /**
-    it("closes upon re selecting the person search nav icon", async () => {
-        await PatientSearchModal.personSearchModalOpen();
-        await SideNav.clickPersonSearch();
-        await PatientSearchModal.personSearchModalClosed();
-    });
-
-    it("closes when choosing other section from side nav", async () => {
-        await SideNav.clickPersonSearch();
-        await PatientSearchModal.personSearchModalOpen();
-        await SideNav.clickCalendar();
-        await PatientSearchModal.personSearchModalClosed();
-    });
 
     it("displays a list of people", async () => {
         await SideNav.clickPersonSearch();
         await PatientSearchModal.personSearchModalOpen();
-        await PatientSearchModal.getPersonName(1);
-        await PatientSearchModal.getPersonName(2);
-        await PatientSearchModal.getPersonName(3);
-        await SideNav.clickPersonSearch();
-        await PatientSearchModal.personSearchModalClosed();
+        await PatientSearchModal.clickAddPatient();
+        await PatientSearchModal.clickAddPatient();
+        name1 = await PatientSearchModal.getPersonName(1);
+        name2 = await PatientSearchModal.getPersonName(2);
+        name3 = await PatientSearchModal.getPersonName(3);
     });
+
 
     it("displays person that was searched for with only first name", async () => {
-        await SideNav.clickPersonSearch();
-        await PatientSearchModal.personSearchModalOpen();
-        name1 = await PatientSearchModal.getPersonName(1);
-        let firstName = name1.split(' ')[0]
+        firstName = name1.split(' ')[0];
+        lastName = name1.split(' ')[1];
         await PatientSearchModal.searchForPerson(firstName);
-        await PatientSearchModal.personPresantInList(name1);
-        await SideNav.clickPersonSearch();
-        await PatientSearchModal.personSearchModalClosed();
+        await PatientSearchModal.personPresantInList(lastName);
+        await PatientSearchModal.clearSearchField(firstName.length);
     });
 
+
     it("displays person that was searched for with only last name", async () => {
-        await SideNav.clickPersonSearch();
-        await PatientSearchModal.personSearchModalOpen();
-        name1 = await PatientSearchModal.getPersonName(1);
-        let lastName = name1.split(' ')[1]
         await PatientSearchModal.searchForPerson(lastName);
-        await PatientSearchModal.personPresantInList(name1);
-        await SideNav.clickPersonSearch();
-        await PatientSearchModal.personSearchModalClosed();
+        await PatientSearchModal.personPresantInList(firstName);
+        await PatientSearchModal.clearSearchField();
     });
 
     it("displays person that was searched with partially correct name", async () => {
-        await SideNav.clickPersonSearch();
-        await PatientSearchModal.personSearchModalOpen();
-        name1 = await PatientSearchModal.getPersonName(1);
         let partialName = name1.split(' ')[0] + " Foo"
         await PatientSearchModal.searchForPerson(partialName);
-        await PatientSearchModal.personPresantInList(name1);
-        await SideNav.clickPersonSearch();
-        await PatientSearchModal.personSearchModalClosed();
+        await PatientSearchModal.personPresantInList(lastName);
+        await PatientSearchModal.clearSearchField();
     });
 
     it("displays person that was searched for with first & last name", async () => {
-        await SideNav.clickPersonSearch();
-        await PatientSearchModal.personSearchModalOpen();
-        name1 = await PatientSearchModal.getPersonName(1);
+        await PatientSearchModal.clearSearchField();
         await PatientSearchModal.searchForPerson(name1);
         await PatientSearchModal.personPresantInList(name1);
-        await SideNav.clickPersonSearch();
-        await PatientSearchModal.personSearchModalClosed();
+    });
+
+    it("does not display other patients when search for specific patient", async () => {
+        await PatientSearchModal.personNotPresantInList(name2);
+        await PatientSearchModal.personNotPresantInList(name3);
+        await PatientSearchModal.clearSearchField();
     });
 
     it("displays no patients when none are found", async () => {
-        await SideNav.clickPersonSearch();
-        await PatientSearchModal.personSearchModalOpen();
+        await PatientSearchModal.clearSearchField();
         await PatientSearchModal.searchForPerson("foo bar");
         await PatientSearchModal.noPatientFoundDisplayed();
-        await SideNav.clickPersonSearch();
-        await PatientSearchModal.personSearchModalClosed();
-    });
-
-    it("closes once a person is selected from the list", async () => {
-        await SideNav.clickPersonSearch();
-        await PatientSearchModal.personSearchModalOpen();
-        name1 = await PatientSearchModal.getPersonName(1);
-        await PatientSearchModal.searchForPerson(name1);
-        await PatientSearchModal.personPresantInList(name1);
-        await PatientSearchModal.selectPersonInListByName(name1);
-        await PatientSearchModal.personSearchModalClosed();
+        await PatientSearchModal.clearSearchField();
     });
 
     it("opens the patient record once a patient is selected", async () => {
-        await SideNav.clickPersonSearch();
-        await PatientSearchModal.personSearchModalOpen();
-        name1 = await PatientSearchModal.getPersonName(1);
-        await PatientSearchModal.searchForPerson(name1);
-        await PatientSearchModal.personPresantInList(name1);
-        await PatientSearchModal.selectPersonInListByName(name1);
-        await PatientSearchModal.personSearchModalClosed();
+        await PatientSearchModal.clearSearchField();
+        await PatientSearchModal.searchForPerson(firstName);
+        await PatientSearchModal.personPresantInList(lastName);
+        await PatientSearchModal.selectPersonInListByName(lastName);
         await PatientRecordPage.onPatientRecordPage();
     });
-
-     */
-
 
 });

@@ -3,11 +3,19 @@ const Page = require("./page");
 class PatientSearchModal extends Page {
 
   get searchField() {
-    return $('//input[@class="k-input-inner"]');
+    return $('//input[@placeholder="Search"]');
+  }
+
+  get clearSearch() {
+    return $('//button[contains(@class, "mud-icon-button-edge-end")]')
   }
 
   get noPatientFound() {
     return $('//div[@class="hchb-list-view-no-results"][text()="No Patients."]')
+  }
+
+  get addPatientButton() {
+    return $('//button[@aria-label="add"][@title="Add New Test Patient"]')
   }
 
   async personSearchModalOpen() {
@@ -19,7 +27,11 @@ class PatientSearchModal extends Page {
   }
 
   async noPatientFoundDisplayed() {
-    await this.noPatientFound.waitForDisplayed({timeout: 5000})
+    await this.noPatientFound.waitForDisplayed({timeout: 5000});
+  }
+
+  async clickAddPatient() {
+    await this.addPatientButton.click();
   }
 
   personInList(index) {
@@ -35,6 +47,11 @@ class PatientSearchModal extends Page {
     await elm.waitForDisplayed({ timeout: 10000 });
   }
 
+  async personNotPresantInList(name) {
+    let elm = this.personInListByName(name);
+    await elm.waitForDisplayed({reverse: true, timeout: 5000});
+  }
+
   async getPersonName(index) {
     let elm = this.personInList(index);
     await elm.waitForDisplayed({ timeout: 10000 });
@@ -46,6 +63,17 @@ class PatientSearchModal extends Page {
   async searchForPerson(person) {
     await this.searchField.click();
     await this.searchField.setValue(person);
+    await driver.pressKeyCode(66);
+  }
+
+  async clearSearchField(num) {
+    await this.searchField.click();
+    /**
+    for (let i = 0; i < num; i++) {
+      await driver.pressKeyCode(67);
+    }
+     */
+    await this.clearSearch.click();
   }
 
   async selectPersonInListByName(name) {
